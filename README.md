@@ -8,3 +8,6 @@
 * python app.py
 
 ## Randomly 5 users are already in place to test the app.
+
+
+[You can directly view the app here](https://recommend-pdt-static-data.herokuapp.com/)
