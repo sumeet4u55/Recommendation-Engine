@@ -8,7 +8,9 @@ warnings.filterwarnings("ignore")
 
 app = Flask(__name__)
 
-#Loading all the relevant files at the time of app startup
+'''
+    Fetching the cleaned, processed, modelled and recommened data
+'''
 df_main = Fetchdata().getOrignalData()
 df_processed = Fetchdata().getTextProcessedData()
 df_mapped = Fetchdata().getMappedData()
@@ -72,14 +74,6 @@ def get_data():
     if request.method == 'POST':
         user = request.form['name']
         return getRecommendedProduct(user, df_mapped)
-
-# # Auto-suggest which auto-populates the names of the user
-# @app.route('/search/names',methods=['GET'])
-# def process():
-#     query = request.args.get('query')
-#     suggestions = list(products[(~products.userId.isnull()) & (products.userId.str.startswith(query))]['userId'])
-#     suggestions = [{'value':suggestion,'data':suggestion} for suggestion in suggestions]
-#     return jsonify({"suggestions":suggestions[:5]})
 
 if __name__ == "__main__":
   app.run()
